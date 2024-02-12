@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/_index.scss';
 import App from './App';
 import { WorkoutsContextProvider } from './context/WorkoutsContext';
 import { AuthContextProvider } from './context/AuthContext'
