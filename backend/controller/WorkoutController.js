@@ -1,4 +1,4 @@
-const Workout = require('../models/WorkoutModel');
+const Workout = require('../models/workoutModel');
 const mongoose = require('mongoose');
 
 //get all workouts
@@ -36,7 +36,7 @@ const createWorkout = async (req, res) => {
   if (!load) {
     emptyFields.push('load')
   }
-  if (!reps) {
+  if (!reps) { 
     emptyFields.push('reps')
   }
   if (emptyFields.length > 0) {
@@ -45,7 +45,8 @@ const createWorkout = async (req, res) => {
 
   //add workout to db
   try{
-    const workout = await Workout.create({title, load, reps})
+    const user_id = req.user._id
+    const workout = await Workout.create({title, load, reps, user_id})
     res.status(200).json(workout)
   } catch (error) {
     res.status(400).json({error: error.message})
