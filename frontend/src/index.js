@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/_index.scss';
 import App from './App';
-import { WorkoutsContextProvider } from './context/WorkoutsContext';
+import { WorkoutsContextProvider } from './context/WorkoutsContext'
 import { AuthContextProvider } from './context/AuthContext'
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

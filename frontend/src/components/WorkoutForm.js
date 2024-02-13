@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-import {useAuthContext} from '../hooks/useAuthContext'
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const WorkoutForm = () => {
-  const {dispatch} = useWorkoutsContext()
-  const {user} = useAuthContext()
+  const { dispatch } = useWorkoutsContext()
+  const { user } = useAuthContext()
 
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
@@ -21,7 +21,7 @@ const WorkoutForm = () => {
     }
 
     const workout = {title, load, reps}
-    
+
     const response = await fetch('/api/workouts', {
       method: 'POST',
       body: JSON.stringify(workout),
@@ -53,36 +53,31 @@ const WorkoutForm = () => {
       <label>Excersize Title:</label>
       <input 
         type="text"
-        onChange={(e) => setTitle(e.target.value)} 
+        onChange={(e) => setTitle(e.target.value)}
         value={title}
-        className={(emptyFields && emptyFields.includes('title')) ? 'error' : ''}
-
+        className={emptyFields.includes('title') ? 'error' : ''}
       />
 
       <label>Load (in kg):</label>
       <input 
-        type="number" 
-        onChange={(e) => setLoad(e.target.value)} 
+        type="number"
+        onChange={(e) => setLoad(e.target.value)}
         value={load}
-        className={(emptyFields && emptyFields.includes('load')) ? 'error' : ''}
-
+        className={emptyFields.includes('load') ? 'error' : ''}
       />
 
-      <label>Number of Reps:</label>
-      <input
-        type="number" 
-        onChange={(e) => setReps(e.target.value)} 
+      <label>Reps:</label>
+      <input 
+        type="number"
+        onChange={(e) => setReps(e.target.value)}
         value={reps}
-        className={(emptyFields && emptyFields.includes('reps')) ? 'error' : ''}
-
-
+        className={emptyFields.includes('reps') ? 'error' : ''}
       />
 
       <button>Add Workout</button>
       {error && <div className="error">{error}</div>}
     </form>
-
-  );
+  )
 }
- 
-export default WorkoutForm;
+
+export default WorkoutForm
